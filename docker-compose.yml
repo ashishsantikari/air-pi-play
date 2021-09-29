@@ -1,6 +1,6 @@
 version: "2.1"
 services:
-  rpiplay:
+  yxplay:
     build: ./
     privileged: true
     restart: always
