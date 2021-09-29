@@ -7,11 +7,9 @@ case $AIRPIPLAY_LATENCY_MODE in
   1) LATENCY="-l";;
   0) LATENCY="";;
 esac
-ROTATION="-r ${AIRPIPLAY_ROTATION:=""}"
-FLIP="-f ${AIRPIPLAY_FLIP:=""}"
 
-echo "Air-Pi-Play v$(cat VERSION) powered by RpiPlay"
+echo "Air-Pi-Play v$(cat VERSION) powered by UxPlay"
 
 echo "Device is discoverable as ${DEVICE_NAME}"
 
-uxplay -n $DEVICE_NAME $ROTATION -f $FLIP
+uxplay -n $DEVICE_NAME

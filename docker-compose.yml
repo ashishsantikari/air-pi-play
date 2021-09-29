@@ -1,6 +1,6 @@
 version: "2.1"
 services:
-  yxplay:
+  uxPlay:
     build: ./
     privileged: true
     restart: always
