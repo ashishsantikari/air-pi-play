@@ -1,20 +1,29 @@
 FROM balenalib/rpi-raspbian AS builder
 
 RUN install_packages cmake \
-                     libavahi-compat-libdnssd-dev libplist-dev libssl-dev \
-                     build-essential\
+                     pkg-config \
+                     libssl-dev \
+                     libplist-dev \
+                     libavahi-compat-libdnssd-dev \
+                     libgstreamer1.0-dev \
+                     libgstreamer-plugins-base1.0-dev \
+                     gstreamer1.0-libav \
+                     gstreamer1.0-plugins-bad \
+                     gstreamer1.0-vaapi \
+                     build-essential \
+                     libx11-dev \
                      git
 
 RUN install_packages libraspberrypi-dev libraspberrypi-doc
 
 WORKDIR /usr/src/app/
 
-RUN git clone https://github.com/FD-/RPiPlay.git
+RUN git clone https://github.com/FDH2/UxPlay.git
 
-WORKDIR /usr/src/app/RPiPlay/build
+WORKDIR /usr/src/app/UxPlay
 
-RUN cmake --DCMAKE_CXX_FLAGS="-O3" --DCMAKE_C_FLAGS="-O3" .. &&\
-    make -j &&\
+RUN cmake --DZOOMFIX=ON . &&\
+    make &&\
     make install
 
 RUN install_packages python3-pip python3-setuptools rsync
@@ -25,7 +34,7 @@ WORKDIR /usr/src/app
 
 RUN pip3 install git+https://github.com/larsks/dockerize
 
-RUN dockerize -n --verbose -g video -g audio -o /rootfs/ /usr/local/bin/rpiplay &&\
+RUN dockerize -n --verbose -g video -g audio -o /rootfs/ /usr/local/bin/uxplay &&\
     rm /rootfs/Dockerfile
 
 FROM busybox:stable
