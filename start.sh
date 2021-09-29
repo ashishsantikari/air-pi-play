@@ -3,7 +3,6 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/vc/lib
 
 DEVICE_NAME="${AIRPIPLAY_NAME:="Air-Pi-Play@$HOSTNAME"}"
-AUDIO_OUT="${AIRPIPLAY_AUDIO_OUT:="hdmi"}"
 case $AIRPIPLAY_LATENCY_MODE in
   1) LATENCY="-l";;
   0) LATENCY="";;
@@ -15,4 +14,4 @@ echo "Air-Pi-Play v$(cat VERSION) powered by RpiPlay"
 
 echo "Device is discoverable as ${DEVICE_NAME}"
 
-uxplay -n $DEVICE_NAME -a $AUDIO_OUT -b $LATENCY $ROTATION $FLIP
+uxplay -n $DEVICE_NAME $ROTATION -f $FLIP
