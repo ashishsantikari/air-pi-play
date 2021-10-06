@@ -7,7 +7,7 @@ Turn a Raspberry Pi into an Airplay server to enable screen mirroring on tvs, mo
 
 Running this app is as simple as deploying it to a balenaCloud fleet. You can do it in just one click by using the button below:
 
-[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/rahul-thakoor/air-pi-play)
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/ashishsantikari/air-pi-play)
 
 
 ## Configuration
